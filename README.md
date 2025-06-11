@@ -1,6 +1,84 @@
 # AI News Agent
 
-An automated news aggregation and summarization system that scrapes Vietnamese news articles, summarizes them, and delivers the content through various channels.
+**AI News Agent** is a Python application that automatically scrapes the latest news articles from VnExpress, generates concise AI-powered summaries, and delivers them to users via email—just like a personalized daily newsletter. The goal is to help users stay informed with minimal effort, saving time while ensuring they never miss important headlines.
+
+This project combines robust web scraping techniques with advanced natural language processing. It uses a large language model (LLM) to distill lengthy news articles into clear, digestible summaries. The summarized content is then sent directly to subscribers through automated email delivery, making news consumption fast and convenient.
+
+**Technologies Used:**  
+- Python 3  
+- Web scraping (BeautifulSoup, requests)  
+- AI/LLM summarization  
+- Email automation (smtplib, email)  
+
+Whether you're a developer interested in automation, a data enthusiast, or simply want to streamline your news intake, AI News Agent offers a practical, beginner-friendly solution for daily news summarization and delivery.
+
+## 🤖 Setting Up Ollama with llama3.1:8b
+
+This project uses Ollama to run the llama3.1:8b model locally for AI-powered news summarization. Here's how to set it up:
+
+### 1. Install Ollama
+
+For macOS:
+```bash
+curl -fsSL https://ollama.com/install.sh | sh
+```
+
+For Linux:
+```bash
+curl -fsSL https://ollama.com/install.sh | sh
+```
+
+For Windows:
+- Download and install from [Ollama's official website](https://ollama.com/download)
+
+### 2. Start Ollama Service
+
+The Ollama service needs to be running for the application to work:
+```bash
+ollama serve
+```
+Keep this terminal window open while using the application.
+
+### 3. Pull the Model
+
+In a new terminal window, pull the llama3.1:8b model:
+```bash
+ollama pull llama3.1:8b
+```
+This may take a few minutes depending on your internet connection.
+
+### 4. Verify Installation
+
+Test if Ollama and the model are working correctly:
+```bash
+ollama run llama3.1:8b "Hello, how are you?"
+```
+
+### 5. Integration with AI News Agent
+
+The project automatically uses Ollama through its Python client:
+- No API keys needed - everything runs locally
+- Model configuration is in `news_agent/configuration/config.py`
+- Default model is set to `llama3.1:8b`
+- Summarization happens in `news_agent/src/summarizing/summarizer.py`
+
+### Troubleshooting
+
+1. If Ollama isn't responding:
+   ```bash
+   # Check if Ollama service is running
+   curl http://localhost:11434/api/tags
+   ```
+
+2. If the model is slow:
+   - The first run may take longer as the model loads into memory
+   - Subsequent runs will be faster
+   - Consider reducing the number of articles processed in parallel
+
+3. Memory Issues:
+   - llama3.1:8b requires approximately 8GB of RAM
+   - Close other memory-intensive applications while running
+   - Consider using a lighter model if needed
 
 ## 📁 Project Structure
 
