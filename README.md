@@ -1,5 +1,6 @@
 # AI News Agent
 
+
 **AI News Agent** is a Python application that automatically scrapes the latest news articles from VnExpress, generates concise AI-powered summaries, and delivers them to users via email—just like a personalized daily newsletter. The goal is to help users stay informed with minimal effort, saving time while ensuring they never miss important headlines.
 
 This project combines robust web scraping techniques with advanced natural language processing. It uses a large language model (LLM) to distill lengthy news articles into clear, digestible summaries. The summarized content is then sent directly to subscribers through automated email delivery, making news consumption fast and convenient.
