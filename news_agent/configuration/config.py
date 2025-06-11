@@ -10,6 +10,7 @@ EMAIL_ADDRESS=os.getenv("EMAIL_ADDRESS")
 EMAIL_PASSWORD=os.getenv("EMAIL_PASSWORD")
 RECIPIENT_EMAIL=os.getenv("RECIPIENT_EMAIL")
 API_KEY=os.getenv("API_KEY")
+MAX_ARTICLES = 4
 
 NEWS_SOURCES = {
     # "Thế giới": "https://vnexpress.net/the-gioi",

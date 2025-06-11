@@ -10,7 +10,7 @@ import time
 logger = setup_logger('news_pipeline')
 
 
-def process_topic_articles(topic, max_articles=4):
+def process_topic_articles(topic, max_articles=MAX_ARTICLES):
     """Process articles for a specific topic and return summarized articles."""
     try:
         logger.info(f"Processing topic: {topic}")
@@ -70,9 +70,8 @@ def daily_news_job():
 def main():
     """Main function - starts the scheduled pipeline."""
     try:
-        time = "15:33"
         logger.info("Starting news pipeline with scheduler")
-        start_scheduler(daily_news_job, time)
+        start_scheduler(daily_news_job, SCHEDULE_TIME)
     except KeyboardInterrupt:
         logger.info("Application interrupted by user")
     except Exception as e:
