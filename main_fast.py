@@ -27,7 +27,7 @@ def daily_news_job():
     print("🤖 Daily news job completed")
 
 def pipeline_simple(): 
-    time = "16:18"
+    time = SCHEDULE_TIME
     start_scheduler(daily_news_job, time)
 
 def main():
