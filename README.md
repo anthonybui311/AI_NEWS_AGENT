@@ -222,3 +222,43 @@ python news_agent/main2.py # For enhanced functionality
 ```
 
 Make sure to configure your settings in `configuration/config.py` before running the application.
+
+## User Configuration
+
+When running the application, users can customize their experience through interactive CLI prompts:
+
+1. **Summary Length**: Set how many sentences each news summary should contain
+   ```bash
+   Please enter desired summary length (number of sentences per topic):
+   ```
+
+2. **Articles per Topic**: Define maximum number of articles to process for each category
+   ```bash
+   Please enter maximum number of articles per topic:
+   ```
+
+3. **Schedule Time**: Set when the news updates should run daily
+   ```bash
+   Please enter the time to run the job (e.g., '9:00' for every day at 9 AM):
+   ```
+
+4. **Custom News Sources**: Add your own news sources with topics
+   - Enter topic/category name
+   - Provide corresponding URL
+   - Add multiple sources
+   - Type 'done' or press Ctrl+C to finish
+
+Example configuration session:
+```bash
+=== Configuration Setup ===
+
+Please enter desired summary length: 3
+Please enter maximum number of articles per topic: 5
+Please enter the time to run the job: 9:00
+
+Add news sources (Press Ctrl+C or type 'done' to finish):
+Enter news topic/category: Technology
+Enter the URL for Technology: https://example.com/tech
+```
+
+If no custom news sources are added, the system will use default VnExpress categories.
