@@ -1,7 +1,13 @@
 from dotenv import load_dotenv #type: ignore
 import os
+import re
 
 load_dotenv()  # Load variables from .env file
+
+def is_valid_email(email):
+    """Validate email format using regex pattern"""
+    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    return re.match(pattern, email) is not None
 
 def get_user_configs():
     """Get all user configurations through CLI inputs"""
@@ -29,6 +35,13 @@ def get_user_configs():
 
     # Get schedule time
     schedule_time = input("\nPlease enter the time to run the job (e.g., '9:00' for every day at 9 AM): ").strip()
+
+    # Get recipient email
+    while True:
+        recipient_email = input("\nPlease enter your email address for receiving news updates: ").strip()
+        if is_valid_email(recipient_email):
+            break
+        print("Please enter a valid email address.")
 
     # Initialize empty dictionary for news sources
     news_sources = {}
@@ -72,14 +85,13 @@ def get_user_configs():
     for topic, url in news_sources.items():
         print(f"- {topic}: {url}")
 
-    return summary_length, max_articles, schedule_time, news_sources
+    return summary_length, max_articles, schedule_time, news_sources, recipient_email
 
 # Get user configurations
-SUMMARY_LENGTH, MAX_ARTICLES, SCHEDULE_TIME, NEWS_SOURCES = get_user_configs()
+SUMMARY_LENGTH, MAX_ARTICLES, SCHEDULE_TIME, NEWS_SOURCES, RECIPIENT_EMAIL = get_user_configs()
 
 # Other configurations
 OLLAMA_MODEL = "llama3.1:8b"
 EMAIL_ADDRESS = os.getenv("EMAIL_ADDRESS")
 EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")
-RECIPIENT_EMAIL = os.getenv("RECIPIENT_EMAIL")
 API_KEY = os.getenv("API_KEY")
